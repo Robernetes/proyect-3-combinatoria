@@ -82,7 +82,7 @@ func main(){
                 goto CASE1
             }else{
                 n = val
-                fmt.Println("Combinaciones sin repeticion:", cp.PermutacionSinRepe(n))
+                fmt.Println("Permutaciones sin repeticion:", cp.PermutacionSinRepe(n))
                 fmt.Println("Presione Enter para continuar al menú principal...")
                 fmt.Scanln()
                 limpiar.Run()
@@ -98,7 +98,7 @@ func main(){
             if res == "y" {
                 goto ADD
             }
-            fmt.Println(cp.PermutacionConRepe(num...))
+            fmt.Println("Permutaciones con repeticion: ",cp.PermutacionConRepe(num...))
             fmt.Println("Presione Enter para continuar al menú principal...")
             fmt.Scanln()
             limpiar.Run()
