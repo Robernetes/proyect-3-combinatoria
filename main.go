@@ -110,40 +110,24 @@ func main(){
             limpiar.Run()
             goto MEMU
         case 4:
-            fmt.Print("Ingresa n:")
-            fmt.Scanln(&n)
-            fmt.Print("Ingresa r:")
-            fmt.Scanln(&r)
             fmt.Println(cp.CombinacionConRepe(n,r))
             fmt.Println("Presione Enter para continuar al menú principal...")
             fmt.Scanln()
             limpiar.Run()
             goto MEMU
         case 5:
-            fmt.Print("Ingresa n:")
-            fmt.Scanln(&n)
-            fmt.Print("Ingresa r:")
-            fmt.Scanln(&r)
             fmt.Println(cp.VariacionesSinRepe(n,r))
             fmt.Println("Presione Enter para continuar al menú principal...")
             fmt.Scanln()
             limpiar.Run()
             goto MEMU
         case 6:
-            fmt.Print("Ingresa n:")
-            fmt.Scanln(&n)
-            fmt.Printf("Ingresa r:")
-            fmt.Scanln(&r)
             fmt.Println(cp.VariacionesConRepe(float64(n),float64(r)))
             fmt.Println("Presione Enter para continuar al menú principal...")
             fmt.Scanln()
             limpiar.Run()
             goto MEMU
         case 7:
-            fmt.Print("Ingresa n:")
-            fmt.Scanln(&n)
-            fmt.Print("Ingrese m:")
-            fmt.Scanln(&m)
             fmt.Println(cp.Emparejamiento(n,m))
             fmt.Println("Presione Enter para continuar al menú principal...")
             fmt.Scanln()
