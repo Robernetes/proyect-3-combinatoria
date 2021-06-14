@@ -3,6 +3,7 @@ package combinatoria
 import (
 	"fmt"
 	"math"
+    "github.com/gookit/color"
 )
 
 
@@ -31,9 +32,9 @@ func PermutacionSinRepe(num int) int{
 //FUNCION PARA PERMUTACION CON REPETICION
 //ES UNA VARADIC FUNCION QUE RECIBE CUANTOS VALORES EL USUARIO QUIERA INGRESAR, RETORNA UN FLOAT64
 func PermutacionConRepe(cantidad ...int) float64{
-    result:=0.0
+    result:=1.0
     var n int
-    fmt.Print("Ingresa n: ")
+    color.Print("Ingresa <suc>n</>: ")
     fmt.Scanln(&n)
     //var n int = 6
     multFact:=1
