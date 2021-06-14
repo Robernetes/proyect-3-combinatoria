@@ -3,10 +3,13 @@ package main
 //LIBRERIAS IMPORTADAS EN ESTE PROYECTO
 import (
 	"fmt"
-	cp "github.com/Robernetes/proyect-3-combinatoria/combinatoria"
 	"os"
 	"os/exec"
+    "time"
 	"strconv"
+
+	cp "github.com/Robernetes/proyect-3-combinatoria/combinatoria"
+	"github.com/gookit/color"
 )
 
 var limpiarW = exec.Command("cmd", "/c", "cls")
@@ -19,37 +22,42 @@ func main() {
 	var num []int
 	var input, res string
 
+
 	//MENU PRINCIPAL QUE SE MUESTRA AL USUARIO
 MEMU:
-	fmt.Println("*****MENU PRINCIPAL*****")
-	fmt.Println("1- Permutacion sin repeticion")
-	fmt.Println("2- Permutacion con repeticion")
-	fmt.Println("3- Combinacion sin repeticion")
-	fmt.Println("4- Combinacion con repeticion")
-	fmt.Println("5- Variaciones sin repeticion")
-	fmt.Println("6- Variaciones con repeticion")
-	fmt.Println("7- Emparejamientos")
-	fmt.Println("8- Salir")
+    option = 0
+	fmt.Println("[*******MENU PRINCIPAL*******]")
+	color.Println("<blue>[1]</> Permutacion sin repeticion")
+	color.Println("<blue>[2]</> Permutacion con repeticion")
+	color.Println("<blue>[3]</> Combinacion sin repeticion")
+	color.Println("<blue>[4]</> Combinacion con repeticion")
+	color.Println("<blue>[5]</> Variaciones sin repeticion")
+	color.Println("<blue>[6]</> Variaciones con repeticion")
+	color.Println("<blue>[7]</> Emparejamientos")
+	color.Println("<red>[8]</> Salir")
 
-	fmt.Println("Selecciona una opcion: ")
+	fmt.Print("Selecciona una opcion: ")
 	fmt.Scanln(&option)
 
 	//CONDICIÓN PARA RE UTILIZAR LAS VARIABLES 'n' Y 'r' EN LAS FUNCIONES QUE PIDAN TALES VARIABLES
-	if (option == 3) || (option == 4) || (option == 5) || (option == 6) || (option == 7) {
-		fmt.Print("Ingresa n:")
+	if ((option == 3) || (option == 4) || (option == 5) || (option == 6) || (option == 7)) && option != 0 {
+    ENTERN:
+		color.Print("Ingresa <suc>n</>:")
 		fmt.Scanln(&input)
 		val, err := strconv.Atoi(input)
 		if err != nil {
-			fmt.Println("El valor intresado no es numerico, intenta nuevamente")
+			color.Info.Tips("El valor ingresado no es numerico, intenta nuevamente")
+            goto ENTERN
 		} else {
 			n = val
 		}
-
-		fmt.Print("Ingresa r:")
+        ENTERR:
+		color.Print("Ingresa <suc>r</>:")
 		fmt.Scanln(&input)
 		val, err = strconv.Atoi(input)
 		if err != nil {
-			fmt.Println("El valor intresado no es numerico, intenta nuevamente")
+			color.Info.Tips("El valor intresado no es numerico, intenta nuevamente")
+            goto ENTERR
 		} else {
 			r = val
 		}
@@ -60,81 +68,85 @@ MEMU:
 	switch option {
 	case 1:
 	CASE1:
-		fmt.Print("Ingresa n: ")
+		color.Print("Ingresa <suc>n</>: ")
 		fmt.Scanln(&input)
 		val, err := strconv.Atoi(input)
 		if err != nil {
-			fmt.Println("El valor ingresado no es un numero, intenta nuevamente")
+			color.Info.Tips("El valor intresado no es numerico, intenta nuevamente")
 			goto CASE1
 		} else {
 			n = val
-			fmt.Println("Permutaciones sin repeticion:", cp.PermutacionSinRepe(n))
-			fmt.Println("Presione Enter para continuar al menú principal...")
+			color.Printf("Permutaciones sin repeticion: <suc>%v</>\n", cp.PermutacionSinRepe(n))
+			color.Info.Tips("Presione Enter para continuar al menú principal...")
 			fmt.Scanln()
 			LimpiarTerminal()
 			goto MEMU
 		}
 	case 2:
 	ADD:
-		fmt.Print("Ingresa valor de grupo: ")
+		fmt.Print("Ingresa valor de un grupo: ")
 		fmt.Scanln(&r)
 		num = append(num, r)
-		fmt.Print("Presione 'y' para add otro grupo o 'c' para continuar: ")
+		color.Print("Presione <suc>'y'</> para add otro grupo o <suc>'c'</> para continuar: ")
 		fmt.Scanln(&res)
 		if res == "y" {
 			goto ADD
 		}
-		fmt.Println("Permutaciones con repeticion: ", cp.PermutacionConRepe(num...))
-		fmt.Println("Presione Enter para continuar al menú principal...")
+        color.Printf("Permutaciones con repeticion: <suc>%v</>\n", cp.PermutacionConRepe(num...))
+		color.Info.Tips("Presione Enter para continuar al menú principal...")
 		fmt.Scanln()
 		LimpiarTerminal()
 		goto MEMU
 	case 3:
-		fmt.Println("Combinacion Sin Repeticion de ", n, "y", r, "es:", cp.CombinacionSinRepe(n, r))
-		fmt.Println("Presione Enter para continuar al menú principal...")
+		color.Printf("Combinacion Sin Repeticion: <suc>%v</>\n", cp.CombinacionSinRepe(n, r))
+		color.Info.Tips("Presione Enter para continuar al menú principal...")
 		fmt.Scanln()
 		LimpiarTerminal()
 		//LimpiarTerminal()
 		goto MEMU
 	case 4:
-		fmt.Println(cp.CombinacionConRepe(n, r))
-		fmt.Println("Presione Enter para continuar al menú principal...")
+        color.Printf("Combinacion con repeticion: ,suc>%v</>\n",cp.CombinacionConRepe(n, r))
+		color.Info.Tips("Presione Enter para continuar al menú principal...")
 		fmt.Scanln()
 		LimpiarTerminal()
 		goto MEMU
 	case 5:
-		fmt.Println(cp.VariacionesSinRepe(n, r))
-		fmt.Println("Presione Enter para continuar al menú principal...")
+        color.Printf("Variaciones sin repeticion: <suc>%v</>\n",cp.VariacionesSinRepe(n, r))
+		color.Info.Tips("Presione Enter para continuar al menú principal...")
 		fmt.Scanln()
 		LimpiarTerminal()
 		goto MEMU
 	case 6:
-		fmt.Println(cp.VariacionesConRepe(float64(n), float64(r)))
-		fmt.Println("Presione Enter para continuar al menú principal...")
+        color.Printf("Variaciones con repeticion: <suc>%v</>\n",cp.VariacionesConRepe(float64(n), float64(r)))
+		color.Info.Tips("Presione Enter para continuar al menú principal...")
 		fmt.Scanln()
 		LimpiarTerminal()
 		goto MEMU
 	case 7:
-		fmt.Println(cp.Emparejamiento(n, m))
-		fmt.Println("Presione Enter para continuar al menú principal...")
+        color.Printf("Emparejamientos: <suc>%v</>\n",cp.Emparejamiento(n, m))
+		color.Info.Tips("Presione Enter para continuar al menú principal...")
 		fmt.Scanln()
 		LimpiarTerminal()
 		goto MEMU
 	case 8:
-		fmt.Println("Saliendo...")
+		color.Red.Println("Saliendo...")
+        time.Sleep(time.Second * 1)
+
 	default:
-		fmt.Println("****** Selecciona una de las opciones en el menu ******")
-		fmt.Println()
+		color.Info.Tips("****** Selecciona una de las opciones en el menu ******")
+		//fmt.Println()
+        time.Sleep(time.Second * 2)
+		LimpiarTerminal()
 		goto MEMU
 
 	}
 }
-
+//FUNCION QUE LIMPIA LA TERMINAL DEPENDIENDO SI SE ESTA EJECUTANDO EN LINUX O WINDOWS
 func LimpiarTerminal() {
 	limpiarW = exec.Command("cmd", "/c", "cls")
 	limpiarW.Stdout = os.Stdout
-    limpiarL = exec.Command("clear")
-	limpiarL.Stdout = os.Stdout
+    //limpiarL = exec.Command("clear")
+	//limpiarL.Stdout = os.Stdout
+	//limpiarL.Run()
 	limpiarW.Run()
-	limpiarL.Run()
 }
