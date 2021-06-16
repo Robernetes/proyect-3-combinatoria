@@ -12,7 +12,7 @@
 
 ### Creado con Golang
 
-- #### Para instar Golang
+- #### Instalar Golang
   [Página para descargar Golang](https://golang.org/)
 
 ### Instrucciones para ejecutar
