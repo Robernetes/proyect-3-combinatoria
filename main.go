@@ -52,14 +52,20 @@ MEMU:
 			n = val
 		}
         ENTERR:
-		color.Print("Ingresa <suc>r</>:")
-		fmt.Scanln(&input)
+        if option == 7 {
+            color.Print("Ingresa <suc>m</>:")
+		    fmt.Scanln(&input)
+        }else{
+		    color.Print("Ingresa <suc>r</>:")
+		    fmt.Scanln(&input)
+        }
 		val, err = strconv.Atoi(input)
 		if err != nil {
 			color.Info.Tips("El valor intresado no es numerico, intenta nuevamente")
             goto ENTERR
 		} else {
 			r = val
+            m = val
 		}
 
 	}
@@ -105,7 +111,7 @@ MEMU:
 		//LimpiarTerminal()
 		goto MEMU
 	case 4:
-        color.Printf("Combinacion con repeticion: ,suc>%v</>\n",cp.CombinacionConRepe(n, r))
+        color.Printf("Combinacion con repeticion: <suc>%v</>\n",cp.CombinacionConRepe(n, r))
 		color.Info.Tips("Presione Enter para continuar al menú principal...")
 		fmt.Scanln()
 		LimpiarTerminal()
