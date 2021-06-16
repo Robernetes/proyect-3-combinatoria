@@ -75,9 +75,12 @@ func VariacionesConRepe(n,r float64) float64 {
 
 //FUNCIÓN PARA EMPAREJAMIENTOS
 func Emparejamiento(n,m int) int {
+    result := 0
+    nxm := n * m
+    nxmFact := Factorial(nxm)
     mf:=Factorial(m)
     nf:=Factorial(n)
-    result:=Factorial(m*n) / int(math.Pow(float64(mf),float64(n)) * float64(nf))
+    result = int(nxmFact) / (int(math.Pow(float64(mf),float64(n)) * float64(nf)))
     return result
 }
 
